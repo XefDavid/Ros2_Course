@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bumperbot">
+
+    <!-- creamos el link padre de todo donde vamos a ir añadiendo las partes del dron -->
+    <link name="base_footprint" />
+    <!-- vamos añadiendo links -->
+    <link name="base_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://bumperbot_description/meshes/base_link.stl" />
+            </geometry>
+        </visual>
+    </link>
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint" />
+        <child link="base_link" />
+        <origin xyz="0.0 0.0 0.033" rpy="0.0 0.0 0.033" />
+    </joint>
+    <!-- añadimos nuevo link , la rueda derecha trasera -->
+    <link name="wheel_rigth_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://bumperbot_description/meshes/wheel_right_link.stl" />
+            </geometry>
+        </visual>
+    </link>
+    <!-- el tipo de joint es continuos porque asi rota sobre el padre -->
+    <joint name="wheel_rigth_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="wheel_rigth_link" />
+        <origin xyz="0.0 -0.07 0.0" rpy="0.0 0.0 0.0" />
+        <!-- marcamos el eje de rotacion -->
+        <axis xyz="0.0 1.0 0.0" />
+    </joint>
+    <!-- añadimos rueda izquierda -->
+    <link name="wheel_left_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="-1.57 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://bumperbot_description/meshes/wheel_left_link.stl" />
+            </geometry>
+        </visual>
+    </link>
+    <joint name="wheel_left_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="wheel_left_link" />
+        <!-- medida en mm -->
+        <origin xyz="0.0 0.07 0.0" rpy="0.0 0.0 0.0" />
+        <axis xyz="0.0 1.0 0.0" />
+    </joint>
+    <link name="caster_front_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://bumperbot_description/meshes/caster_front_link.stl" />
+            </geometry>
+        </visual>
+    </link>
+    <joint name="caster_front_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="caster_front_link" />
+        <origin xyz="0.04755 0.0 -0.0275" rpy="0.0 0.0 -0.0275" />
+    </joint>
+    <link name="caster_rear_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://bumperbot_description/meshes/caster_rear_link.stl" />
+            </geometry>
+        </visual>
+    </link>
+    <joint name="caster_rear_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="caster_rear_link" />
+        <origin xyz="-0.04755 0.0 -0.0275" rpy="0.0 0.0 -0.0275" />
+    </joint>
+
+</robot>
