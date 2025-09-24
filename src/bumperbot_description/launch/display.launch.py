@@ -8,6 +8,7 @@ from launch.substitutions import Command, LaunchConfiguration
 
 def generate_launch_description():
 
+
     model_arg = DeclareLaunchArgument(
         name="model",
         default_value= os.path.join(get_package_share_directory("bumperbot_description"), "urdf", "bumperbot.urdf.xacro"),
@@ -22,7 +23,7 @@ def generate_launch_description():
         parameters=[{"robot_description": robot_description}]
     )
 
-    joint_state_pùblisher_gui = Node(
+    joint_state_publisher_gui = Node(
         package="joint_state_publisher_gui",
         executable="joint_state_publisher_gui"
     )
@@ -35,8 +36,8 @@ def generate_launch_description():
         arguments=["-d", os.path.join(get_package_share_directory("bumperbot_description"), "rviz","display.rviz")] 
     )
     return LaunchDescription(
-        model_arg,
+       [ model_arg,
         robot_state_publisher,
-        joint_state_pùblisher_gui,
-        rviz_node,        
+        joint_state_publisher_gui,
+        rviz_node,        ]
     )
