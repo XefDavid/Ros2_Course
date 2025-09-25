@@ -2,11 +2,13 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bumperbot">
 
+    <xacro:arg name="is_ignition" default="true"/>
 
     <!-- Include Gazebo Parameters -->
      <!-- importamos bumperbot_description_gazebo, hacemos un codigo mas manejable y limpio -->
 
     <xacro:include filename="$(find bumperbot_description)/urdf/bumperbot_gazebo.xacro" />
+    <xacro:include filename="$(find bumperbot description)/>urd/bumperbot_ros2_control_xacro"/>
 
     <!-- creamos el link padre de todo donde vamos a ir añadiendo las partes del dron -->
     <link name="base_footprint" />

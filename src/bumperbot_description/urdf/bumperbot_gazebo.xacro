@@ -35,4 +35,23 @@
         <kd>100.0</kd>
         <minDepth>0.001</minDepth>      
     </gazebo>
+    <gazebo>
+        <!-- añadimos los plugin de ros2 control
+        este plugin es por si estamos usando ros2 humble -->
+        <xacro:if value="$(args is_ignition">
+        <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+            <parameters>
+            </parameters>
+        </plugin>
+        </xacro:if>
+        <!-- este plugin es por si es jazzy -->
+        <xacro:unless value="$(arg is_ignition)">
+            <plugin filename="gz_ros_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+                <parameters>
+                </parameters>
+            </plugin> 
+
+        </xacro:unless>
+
+    </gazebo>
 </robot>
