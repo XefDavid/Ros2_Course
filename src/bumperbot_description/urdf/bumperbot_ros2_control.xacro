@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
-<robot name="bumperbot" xmlns:xacro="htpp://ros.org/wiki/xacro">
+<robot name="bumperbot" xmlns:xacro="http://ros.org/wiki/xacro">
     <!-- Definimos el controller , que va a ser el control total del robot -->
     <ros2_control name="RobotSystem" type="system">
         <!-- Añadimos aqui los plugins que necesita si es humble , jazzy... -->
-        <xacro:if value="$(args is_ignition">
+        <xacro:if value="$(arg is_ignition)">
             <hardware>
                 <plugin>ign_ro2_control/ignition</plugin>
             </hardware>
         </xacro:if>
-        <xacro:unless value="$(args is_ignition)">
+        <xacro:unless value="$(arg is_ignition)">
             <hardware>
                 <plugin>gz_ros2_control/GazeboSimSystem</plugin>
             </hardware>
