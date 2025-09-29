@@ -7,7 +7,7 @@ controller_manager:
     type: joint_state_broadcaster/JointStateBroadcaster 
 
   simple_velocity_controller:
-    type: velocity_controllers/JointGroupVelocityController
+    type: joint_group_velocity_controller/JointGroupVelocityController
 
 simple_velocity_controller:
   ros__parameters:
