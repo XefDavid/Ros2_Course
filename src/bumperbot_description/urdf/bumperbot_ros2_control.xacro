@@ -1,35 +1,42 @@
 <?xml version="1.0"?>
-<robot name="bumperbot" xmlns:xacro="http://ros.org/wiki/xacro">
-    <!-- Definimos el controller , que va a ser el control total del robot -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bumperbot">
+
     <ros2_control name="RobotSystem" type="system">
-        <!-- Añadimos aqui los plugins que necesita si es humble , jazzy... -->
+
+        <!-- ros2_control Gazebo -->
+        <!-- ROS 2 Humble -->
         <xacro:if value="$(arg is_ignition)">
             <hardware>
-                <plugin>ign_ro2_control/ignition</plugin>
+                <plugin>ign_ros2_control/IgnitionSystem</plugin>
             </hardware>
         </xacro:if>
+
+        <!-- ROS 2 Iron or above -->
         <xacro:unless value="$(arg is_ignition)">
             <hardware>
                 <plugin>gz_ros2_control/GazeboSimSystem</plugin>
             </hardware>
         </xacro:unless>
+        
+        <!-- ros2_control Common Interfaces -->
         <joint name="wheel_right_joint">
-            <!-- aqui podemos darle un valor maximo a la velocidad de las ruedas -->
             <command_interface name="velocity">
-                <param name="min">-1</param>
-                <param name="max">1</param>
+              <param name="min">-1</param>
+              <param name="max">1</param>
             </command_interface>
             <state_interface name="position" />
-            <state_interface name="velocityt" />
+            <state_interface name="velocity" />
         </joint>
+
         <joint name="wheel_left_joint">
-            <!-- aqui podemos darle un valor maximo a la velocidad de las ruedas -->
             <command_interface name="velocity">
-                <param name="min">-1</param>
-                <param name="max">1</param>
+              <param name="min">-1</param>
+              <param name="max">1</param>
             </command_interface>
             <state_interface name="position" />
-            <state_interface name="velocityt" />
+            <state_interface name="velocity" />
         </joint>
+        
     </ros2_control>
+
 </robot>
