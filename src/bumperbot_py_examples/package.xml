@@ -19,6 +19,8 @@
   <exec_depend condition="$ROS_DISTRO >= iron">gz_ros2_control</exec_depend>
   <exec_depend condition="$ROS_DISTRO == humble">gz_ros2_control</exec_depend>
   <exec_depend>turtlesim</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
 
 
   <test_depend>ament_copyright</test_depend>
