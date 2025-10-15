@@ -1,0 +1,5 @@
+# definimos la estructura y especifica los datos de la peticion (parte de arriba), respuesta (parte de abajo)
+int64 a
+int64 b
+---
+int64 sum
