@@ -27,6 +27,7 @@ setup(
                     'simple_tf_kinematics = bumperbot_py_examples.simple_tf_kinematics:main',                    
                     'simple_service_server = bumperbot_py_examples.simple_service_server:main',
                     'simple_service_client = bumperbot_py_examples.simple_service_client:main',
+                    
 
         ],
     },
