@@ -28,7 +28,8 @@ setup(
                     'simple_service_server = bumperbot_py_examples.simple_service_server:main',
                     'simple_service_client = bumperbot_py_examples.simple_service_client:main',
                     'odom_subscriber = bumperbot_utils.odom_subscriber:main',
-                    
+                    'imu_republisher = bumperbot_localization.imu_republisher:main',
+                    'kalman_filter = bumperbot_localization.kalman_filter:main',               
 
                     
 
