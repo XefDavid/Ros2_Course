@@ -3,3 +3,11 @@ install/
 log/
 COLCON_IGNORE
 
+# Python virtual environment
+venv/
+.venv/
+
+# tf2_tools view_frames debug output
+frames_*.gv
+frames_*.pdf
+
